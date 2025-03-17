@@ -1,172 +1,157 @@
-📌 Task Management API
-A Django-based RESTful API that allows users to manage tasks efficiently.
-Supports authentication, CRUD operations, filtering, pagination, Docker deployment, and GitHub integration.
+# Task Management API
 
-🔹 Features
-✅ User Authentication – JWT-based authentication system
-✅ CRUD Operations – Create, Read, Update, and Delete tasks
-✅ Filtering & Pagination – Filter tasks by status, date, and paginate results
-✅ Docker Support – Easily run with Docker
-✅ GitHub Deployment – Push code to GitHub
+[![Build Status](https://github.com/Maransuri/TaskManagmentAPI/actions/workflows/main.yml/badge.svg)](https://github.com/Maransuri/TaskManagmentAPI/actions/workflows/main.yml)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-📌 1️⃣ Prerequisites
-Ensure you have:
+## Overview
 
-Python 3.11+ installed (Download Here)
-pip & virtualenv installed (pip install virtualenv)
-PostgreSQL (optional) if using a database other than SQLite
-Git installed (Download Here)
-Docker (if running with Docker)
-GitHub Account (Sign Up Here)
-📌 2️⃣ Git Setup
-Run the following to configure Git:
+This API provides a set of endpoints for managing tasks. It allows authenticated users to create, read, update, and delete their own tasks. The API also includes features for filtering, pagination, and restricted access for admin users to view all tasks.
 
-bash
+## Features
 
-git config --global user.name "Your Name"
-git config --global user.email "your-email@example.com"
-📌 3️⃣ Clone the Project
-Run:
+* **Task Management (Authenticated Users):**
+    * Create new tasks with titles, descriptions, and completion status.
+    * Retrieve details of a specific task.
+    * List all tasks created by the authenticated user.
+    * Update task details (title, description, completed status).
+    * Delete tasks.
+* **User Authentication:**
+    * Utilizes Django's built-in authentication system.
+    * Implements token-based authentication using Django Rest Framework's `TokenAuthentication`.
+* **Task Filtering:**
+    * Filter tasks by `completed` status using the `completed` query parameter (e.g., `/api/tasks/?completed=true`).
+    * Filter tasks by date ranges for `created_at` and `updated_at` using query parameters like `created_after`, `created_before`, `updated_after`, `updated_before` (e.g., `/api/tasks/?created_after=2024-01-01`).
+* **Pagination:**
+    * Implements pagination for the list of tasks, displaying 10 tasks per page. Use the `page` query parameter to navigate between pages.
+* **Admin Access (Custom Permissions):**
+    * A custom permission class ensures that only admin users can view the full list of all users' tasks.
+* **Error Handling:**
+    * Handles errors gracefully with appropriate HTTP status codes (e.g., 400 for bad requests, 404 for not found).
 
-bash
+## Technologies Used
 
-git clone https://github.com/Maransuri/TaskManagmentAPI.git
-cd TaskManagmentAPI
-📌 4️⃣ Create a Virtual Environment
-bash
+* **Backend Framework:** Python with Django
+* **API Framework:** Django Rest Framework (DRF)
+* **Authentication:** Django's built-in authentication, DRF's `TokenAuthentication`
+* **Database:** SQLite (default for development)
 
-python -m venv venv
-Activate the virtual environment:
+## Getting Started
 
-Windows:
-bash
-Copy
-Edit
-venv\Scripts\activate
-Mac/Linux:
-bash
+### Prerequisites
 
-source venv/bin/activate
-📌 5️⃣ Install Dependencies
-bash
+* Python (version >= 3.x)
+* pip (Python package installer)
 
-pip install -r requirements.txt
-📌 6️⃣ Configure the Database
-By default, the project uses SQLite. If using PostgreSQL, update settings.py:
+### Installation
 
-python
+1.  Clone the repository:
+    ```bash
+    git clone [https://github.com/Maransuri/TaskManagmentAPI.git](https://www.google.com/search?q=https://github.com/Maransuri/TaskManagmentAPI.git)
+    ```
+2.  Navigate to the project directory:
+    ```bash
+    cd TaskManagmentAPI
+    ```
+3.  Create a virtual environment (recommended):
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Linux/macOS
+    venv\Scripts\activate  # On Windows
+    ```
+4.  Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+5.  Apply migrations:
+    ```bash
+    python manage.py migrate
+    ```
+6.  Create a superuser (for admin access):
+    ```bash
+    python manage.py createsuperuser
+    ```
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'your_db_name',
-        'USER': 'your_db_user',
-        'PASSWORD': 'your_db_password',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-📌 7️⃣ Run Migrations
-bash
+### Running the API
 
-python manage.py migrate
-📌 8️⃣ Create a Superuser (Admin)
-To create an admin account, run:
+1.  Start the development server:
+    ```bash
+    python manage.py runserver
+    ```
+2.  The API will be accessible at `http://localhost:8000/`.
 
-bash
+### Testing the API
 
-python manage.py createsuperuser
-Follow the prompts to set a username, email, and password.
+You can use a tool like Postman or `curl` to test the API endpoints.
 
-📌 9️⃣ Start the Django Server
-bash
+**Postman Collection:**
 
-python manage.py runserver
-Now, visit http://127.0.0.1:8000/admin/ to access the Django Admin panel.
+A Postman collection is included in the repository (`TaskManagementAPI.postman_collection.json`). Import this collection into Postman to easily test the API endpoints.
 
-📌 🔟 API Endpoints
-Method	Endpoint	Description
-POST	/api/token/	Generate JWT access and refresh tokens
-POST	/api/token/refresh/	Refresh access token
-POST	/api/tasks/	Create a new task
-GET	/api/tasks/	List all tasks
-GET	/api/tasks/{id}/	Get details of a task
-PUT	/api/tasks/{id}/	Update a task
-DELETE	/api/tasks/{id}/	Delete a task
-Use Postman or curl to interact with these endpoints.
+**Curl Commands:**
 
-📌 1️⃣1️⃣ Running the Project with Docker (Optional)
-To run the project using Docker, follow these steps:
+Here are some example `curl` commands:
 
-1️⃣ Build the Docker Image
+* **Register a new user:**
+    ```bash
+    curl -X POST -H "Content-Type: application/json" -d '{"username": "testuser", "password": "password123"}' http://localhost:8000/api/users/
+    ```
+* **Get an authentication token:**
+    ```bash
+    curl -X POST -H "Content-Type: application/json" -d '{"username": "testuser", "password": "password123"}' http://localhost:8000/api/token/
+    ```
+* **Create a new task (replace `YOUR_TOKEN` with the actual token):**
+    ```bash
+    curl -X POST -H "Content-Type: application/json" -H "Authorization: Token YOUR_TOKEN" -d '{"title": "My New Task", "description": "This is a test task"}' http://localhost:8000/api/tasks/
+    ```
+* **List all tasks (replace `YOUR_TOKEN`):**
+    ```bash
+    curl -X GET -H "Authorization: Token YOUR_TOKEN" http://localhost:8000/api/tasks/
+    ```
+* **List tasks with filtering:**
+    ```bash
+    curl -X GET -H "Authorization: Token YOUR_TOKEN" http://localhost:8000/api/tasks/?completed=false
+    ```
+* **List tasks with pagination (page 2):**
+    ```bash
+    curl -X GET -H "Authorization: Token YOUR_TOKEN" http://localhost:8000/api/tasks/?page=2
+    ```
+* **Get a specific task (replace `YOUR_TOKEN` and `TASK_ID`):**
+    ```bash
+    curl -X GET -H "Authorization: Token YOUR_TOKEN" http://localhost:8000/api/tasks/1/
+    ```
+* **Update a task (replace `YOUR_TOKEN` and `TASK_ID`):**
+    ```bash
+    curl -X PUT -H "Content-Type: application/json" -H "Authorization: Token YOUR_TOKEN" -d '{"title": "Updated Task", "completed": true}' http://localhost:8000/api/tasks/1/
+    ```
+* **Delete a task (replace `YOUR_TOKEN` and `TASK_ID`):**
+    ```bash
+    curl -X DELETE -H "Authorization: Token YOUR_TOKEN" http://localhost:8000/api/tasks/1/
+    ```
 
-bash
+## API Endpoints
 
-docker build -t taskmanager-api .
-2️⃣ Run the Container
+* `POST /api/users/`: Register a new user.
+* `POST /api/token/`: Get an authentication token.
+* `POST /api/tasks/`: Create a new task (requires authentication).
+* `GET /api/tasks/`: List all tasks for the authenticated user (requires authentication). Supports filtering (`completed`, date ranges) and pagination.
+* `GET /api/tasks/{id}/`: Get details of a specific task (requires authentication).
+* `PUT/PATCH /api/tasks/{id}/`: Update a task (requires authentication, only the creator can update).
+* `DELETE /api/tasks/{id}/`: Delete a task (requires authentication, only the creator can delete).
+* `GET /api/admin/tasks/`: List all tasks across all users (requires admin authentication).
 
-bash
+## Contributing
 
-docker run -p 8000:8000 taskmanager-api
-Now, the app should be running at http://localhost:8000 🚀
+If you'd like to contribute to this API, please follow these guidelines:
 
-📌 1️⃣2️⃣ Testing the API
-Run tests using:
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix.
+3.  Make your changes.
+4.  Submit a pull request.
 
-bash
+## License
 
-python manage.py test
-📌 1️⃣3️⃣ Pushing the Project to GitHub
-🔹 Step 1: Initialize Git
-If you haven’t initialized Git in your project folder, run:
+MIT License
 
-bash
+---
 
-git init
-🔹 Step 2: Create a .gitignore File
-Run:
-
-bash
-
-echo "venv/" > .gitignore
-echo "__pycache__/" >> .gitignore
-echo "db.sqlite3" >> .gitignore
-🔹 Step 3: Add & Commit Your Files
-bash
-
-git add .
-git commit -m "Initial commit - Task Management API"
-🔹 Step 4: Create a GitHub Repository
-Go to GitHub → Click on New Repository.
-Name it TaskManagmentAPI.
-Do NOT initialize with a README (since we already have one).
-Copy the provided remote URL.
-🔹 Step 5: Add Remote Repository
-bash
-
-git remote add origin https://github.com/Maransuri/TaskManagmentAPI.git
-git branch -M main
-🔹 Step 6: Push to GitHub
-bash
-
-git push -u origin main
-📌 1️⃣4️⃣ Verifying Deployment
-Open GitHub.
-Ensure your project files appear.
-📌 1️⃣5️⃣ Troubleshooting
-1. "Command Not Found: python"
-Ensure Python is installed.
-Try using python3 instead of python.
-2. Database Connection Error
-Ensure PostgreSQL is running and credentials are correct.
-3. Docker Issues
-Run docker ps to check if the container is running.
-Restart Docker if necessary.
-📌 🌟 Contributing
-Fork the repository
-Create a new branch (git checkout -b feature-name)
-Commit your changes (git commit -m "Added new feature")
-Push to GitHub (git push origin feature-name)
-Open a Pull Request
-📌 📜 License
-This project is open-source under the MIT License.
+This is a clearer and more comprehensive README file for your Task Management API. It includes instructions for setup, examples of API usage, and information about the technologies used. Remember to commit this updated `README.md` file to your repository.
