@@ -3,77 +3,71 @@
 [![Build Status](https://github.com/Maransuri/TaskManagmentAPI/actions/workflows/main.yml/badge.svg)](https://github.com/Maransuri/TaskManagmentAPI/actions/workflows/main.yml)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Overview
+## Introduction
 
-This API provides a set of endpoints for managing tasks. It allows authenticated users to create, read, update, and delete their own tasks. The API also includes features for filtering, pagination, and restricted access for admin users to view all tasks.
+This document outlines the specifications and usage of the Task Management API, designed to streamline task management for users and provide administrative oversight. Developed using Python with the Django framework and Django Rest Framework (DRF), this API offers a robust and secure solution for creating, retrieving, updating, and deleting tasks. It incorporates features for authentication, filtering, pagination, and role-based access control, ensuring efficient and organized task management.
 
-## Features
+## Key Features
 
-* **Task Management (Authenticated Users):**
-    * Create new tasks with titles, descriptions, and completion status.
-    * Retrieve details of a specific task.
-    * List all tasks created by the authenticated user.
-    * Update task details (title, description, completed status).
-    * Delete tasks.
-* **User Authentication:**
-    * Utilizes Django's built-in authentication system.
-    * Implements token-based authentication using Django Rest Framework's `TokenAuthentication`.
-* **Task Filtering:**
-    * Filter tasks by `completed` status using the `completed` query parameter (e.g., `/api/tasks/?completed=true`).
-    * Filter tasks by date ranges for `created_at` and `updated_at` using query parameters like `created_after`, `created_before`, `updated_after`, `updated_before` (e.g., `/api/tasks/?created_after=2024-01-01`).
-* **Pagination:**
-    * Implements pagination for the list of tasks, displaying 10 tasks per page. Use the `page` query parameter to navigate between pages.
-* **Admin Access (Custom Permissions):**
-    * A custom permission class ensures that only admin users can view the full list of all users' tasks.
-* **Error Handling:**
-    * Handles errors gracefully with appropriate HTTP status codes (e.g., 400 for bad requests, 404 for not found).
+* **User-Centric Task Management:** Empower users to create, view, modify, and remove their own tasks, fostering individual productivity and organization.
+* **Secure Authentication:** Leverages Django's built-in authentication system combined with DRF's `TokenAuthentication` to ensure that all API interactions are secure and authenticated.
+* **Advanced Task Filtering:** Enables users to filter tasks based on completion status and date ranges for creation and updates, facilitating focused task management.
+* **Efficient Pagination:** Implements pagination for task lists, improving performance and user experience by displaying tasks in manageable chunks.
+* **Role-Based Access Control:** Utilizes custom permissions to restrict access to sensitive administrative functions, ensuring that only authorized admin users can view all tasks across the system.
+* **Robust Error Handling:** Provides clear and informative error responses with appropriate HTTP status codes, enhancing the developer experience and simplifying debugging.
+* **Version Control:** Managed using Git and hosted on GitHub, allowing for collaborative development and easy tracking of changes.
 
-## Technologies Used
+## Technologies
 
-* **Backend Framework:** Python with Django
+* **Backend Framework:** Python (>= 3.x) with Django
 * **API Framework:** Django Rest Framework (DRF)
 * **Authentication:** Django's built-in authentication, DRF's `TokenAuthentication`
-* **Database:** SQLite (default for development)
+* **Database:** SQLite (default for development), PostgreSQL, MySQL, etc. (configurable)
+* **Containerization:** Docker (optional, for deployment and consistency)
+* **Version Control:** Git
 
 ## Getting Started
+
+Follow these steps to set up and run the Task Management API.
 
 ### Prerequisites
 
 * Python (version >= 3.x)
 * pip (Python package installer)
+* Git (for cloning the repository)
 
 ### Installation
 
-1.  Clone the repository:
+1.  **Clone the repository from GitHub:**
     ```bash
-    git clone [https://github.com/Maransuri/TaskManagmentAPI.git](https://www.google.com/search?q=https://github.com/Maransuri/TaskManagmentAPI.git)
+    git clone [https://github.com/Maransuri/TaskManagmentAPI.git](https://github.com/Maransuri/TaskManagmentAPI.git)
     ```
-2.  Navigate to the project directory:
+2.  **Navigate to the project directory:**
     ```bash
     cd TaskManagmentAPI
     ```
-3.  Create a virtual environment (recommended):
+3.  **Create and activate a virtual environment (recommended):**
     ```bash
     python -m venv venv
-    source venv/bin/activate  # On Linux/macOS
-    venv\Scripts\activate  # On Windows
+    source venv/bin/activate   # On Linux/macOS
+    venv\Scripts\activate     # On Windows
     ```
-4.  Install dependencies:
+4.  **Install dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
-5.  Apply migrations:
+5.  **Apply database migrations:**
     ```bash
     python manage.py migrate
     ```
-6.  Create a superuser (for admin access):
+6.  **Create a superuser for admin access:**
     ```bash
     python manage.py createsuperuser
     ```
 
 ### Running the API
 
-1.  Start the development server:
+1.  **Start the development server:**
     ```bash
     python manage.py runserver
     ```
@@ -81,76 +75,75 @@ This API provides a set of endpoints for managing tasks. It allows authenticated
 
 ### Testing the API
 
-You can use a tool like Postman or `curl` to test the API endpoints.
+The API can be tested using tools like Postman or by using Docker.
 
-**Postman Collection:**
+#### Postman Collection
 
-A Postman collection is included in the repository (`TaskManagementAPI.postman_collection.json`). Import this collection into Postman to easily test the API endpoints.
+A Postman collection (`TaskManagementAPI.postman_collection.json`) is included in the repository. Import this into Postman to easily interact with the API endpoints. Ensure you update the environment variables with a valid authentication token after obtaining it via the `/api/token/` endpoint.
 
-**Curl Commands:**
+#### Docker Support
 
-Here are some example `curl` commands:
+For a consistent and isolated environment, you can use Docker.
 
-* **Register a new user:**
+1.  **Build the Docker image:**
     ```bash
-    curl -X POST -H "Content-Type: application/json" -d '{"username": "testuser", "password": "password123"}' http://localhost:8000/api/users/
+    docker build -t taskmanagementapi .
     ```
-* **Get an authentication token:**
+2.  **Run the Docker container:**
     ```bash
-    curl -X POST -H "Content-Type: application/json" -d '{"username": "testuser", "password": "password123"}' http://localhost:8000/api/token/
+    docker run -p 8000:8000 taskmanagementapi
     ```
-* **Create a new task (replace `YOUR_TOKEN` with the actual token):**
+    The API will be available at `http://localhost:8000/`.
+
+    **Note:** To create a superuser within the Docker container, use:
     ```bash
-    curl -X POST -H "Content-Type: application/json" -H "Authorization: Token YOUR_TOKEN" -d '{"title": "My New Task", "description": "This is a test task"}' http://localhost:8000/api/tasks/
+    docker exec -it <container_id> python manage.py createsuperuser
     ```
-* **List all tasks (replace `YOUR_TOKEN`):**
-    ```bash
-    curl -X GET -H "Authorization: Token YOUR_TOKEN" http://localhost:8000/api/tasks/
-    ```
-* **List tasks with filtering:**
-    ```bash
-    curl -X GET -H "Authorization: Token YOUR_TOKEN" http://localhost:8000/api/tasks/?completed=false
-    ```
-* **List tasks with pagination (page 2):**
-    ```bash
-    curl -X GET -H "Authorization: Token YOUR_TOKEN" http://localhost:8000/api/tasks/?page=2
-    ```
-* **Get a specific task (replace `YOUR_TOKEN` and `TASK_ID`):**
-    ```bash
-    curl -X GET -H "Authorization: Token YOUR_TOKEN" http://localhost:8000/api/tasks/1/
-    ```
-* **Update a task (replace `YOUR_TOKEN` and `TASK_ID`):**
-    ```bash
-    curl -X PUT -H "Content-Type: application/json" -H "Authorization: Token YOUR_TOKEN" -d '{"title": "Updated Task", "completed": true}' http://localhost:8000/api/tasks/1/
-    ```
-* **Delete a task (replace `YOUR_TOKEN` and `TASK_ID`):**
-    ```bash
-    curl -X DELETE -H "Authorization: Token YOUR_TOKEN" http://localhost:8000/api/tasks/1/
-    ```
+    Replace `<container_id>` with the ID of your running container (found using `docker ps`).
 
 ## API Endpoints
 
-* `POST /api/users/`: Register a new user.
-* `POST /api/token/`: Get an authentication token.
-* `POST /api/tasks/`: Create a new task (requires authentication).
-* `GET /api/tasks/`: List all tasks for the authenticated user (requires authentication). Supports filtering (`completed`, date ranges) and pagination.
-* `GET /api/tasks/{id}/`: Get details of a specific task (requires authentication).
-* `PUT/PATCH /api/tasks/{id}/`: Update a task (requires authentication, only the creator can update).
-* `DELETE /api/tasks/{id}/`: Delete a task (requires authentication, only the creator can delete).
-* `GET /api/admin/tasks/`: List all tasks across all users (requires admin authentication).
+| Method | Endpoint                | Description                                                                                                                                                                                             | Authentication Required |
+| :----- | :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------------------- |
+| POST   | `/api/users/`           | Registers a new user.                                                                                                                                                                                 | No                      |
+| POST   | `/api/token/`           | Retrieves an authentication token for a user.                                                                                                                                                           | No                      |
+| POST   | `/api/tasks/`           | Creates a new task for the authenticated user.                                                                                                                                                            | Yes                     |
+| GET    | `/api/tasks/`           | Lists all tasks for the authenticated user. Supports filtering by `completed` status and date ranges, and pagination.                                                                                       | Yes                     |
+| GET    | `/api/tasks/{id}/`      | Retrieves the details of a specific task.                                                                                                                                                                | Yes                     |
+| PUT/PATCH | `/api/tasks/{id}/`      | Updates a specific task. Only the creator of the task can perform this action.                                                                                                                            | Yes                     |
+| DELETE | `/api/tasks/{id}/`      | Deletes a specific task. Only the creator of the task can perform this action.                                                                                                                            | Yes                     |
+| GET    | `/api/admin/tasks/`     | Lists all tasks across all users. Requires admin authentication.                                                                                                                                         | Yes (Admin)             |
 
 ## Contributing
 
-If you'd like to contribute to this API, please follow these guidelines:
+We welcome contributions to the Task Management API. Please adhere to the following guidelines:
 
-1.  Fork the repository.
-2.  Create a new branch for your feature or bug fix.
-3.  Make your changes.
-4.  Submit a pull request.
+1.  **Fork the repository:** Create your own fork of the repository on GitHub using the "Fork" button.
+2.  **Clone your fork locally:**
+    ```bash
+    git clone [https://github.com/YOUR_USERNAME/TaskManagmentAPI.git](https://www.google.com/search?q=https://github.com/YOUR_USERNAME/TaskManagmentAPI.git)
+    cd TaskManagmentAPI
+    ```
+3.  **Create a new branch:** Make your changes in a dedicated branch, named according to the feature or bug fix.
+    ```bash
+    git checkout -b feature/new-feature
+    ```
+4.  **Implement your changes:** Write clean, well-documented code.
+5.  **Commit your changes:**
+    ```bash
+    git add .
+    git commit -m "Add new feature or fix bug"
+    ```
+6.  **Push your changes to your fork:**
+    ```bash
+    git push origin feature/new-feature
+    ```
+7.  **Submit a pull request:** Once your changes are complete and tested, submit a pull request from your fork to the main repository on GitHub.
 
 ## License
 
-MIT License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
+## Support
 
+For any issues or questions, please refer to the project's issue tracker on GitHub.
