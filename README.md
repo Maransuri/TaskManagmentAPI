@@ -154,4 +154,3 @@ MIT License
 
 ---
 
-This is a clearer and more comprehensive README file for your Task Management API. It includes instructions for setup, examples of API usage, and information about the technologies used. Remember to commit this updated `README.md` file to your repository.
