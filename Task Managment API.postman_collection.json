@@ -1,0 +1,987 @@
+{
+	"info": {
+		"_postman_id": "6279b0ac-dbc8-43cb-a240-8791da2c091d",
+		"name": "Task Managment API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43149136"
+	},
+	"item": [
+		{
+			"name": "create token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"maran\",\r\n  \"password\": \"suri1704\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/token/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"token",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"maran\",\r\n  \"password\": \"suri1704\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/token/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 17 Mar 2025 18:06:49 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.11"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "483"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0MjMyMTIwOSwiaWF0IjoxNzQyMjM0ODA5LCJqdGkiOiI4YmU5ZTA0NjMzZmY0MWE4YjFhZTgyNDhiOWMyMmE3OCIsInVzZXJfaWQiOjF9.yusKLSKTvA1q4Bcm6sxo0TVxAAV1RVgdyppKHEQ8R3I\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjM1MTA5LCJpYXQiOjE3NDIyMzQ4MDksImp0aSI6IjgwYTA0ZDEzYjVlYzQ5Y2RhNmM0NmY5MzkyMGM4ZDY0IiwidXNlcl9pZCI6MX0.gkVo9Q8UqniPTt1D3JyrYiqzezuYxwTlQTFDQ661_UI\"\n}"
+				}
+			]
+		},
+		{
+			"name": "get tasks",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjMxNjczLCJpYXQiOjE3NDIyMzEzNzMsImp0aSI6ImE1ZjIxNWQ4ZDZiZDQ0NzY5YzVkNWFmYzE5ZTJmMzkyIiwidXNlcl9pZCI6MX0.8rUczSSN-H9OypVnDRFhySJQ4QRKKFeGrejkTPXFfOA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"maran\",\r\n  \"password\": \"suri1704\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/tasks/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tasks",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get tasks",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjMxNjczLCJpYXQiOjE3NDIyMzEzNzMsImp0aSI6ImE1ZjIxNWQ4ZDZiZDQ0NzY5YzVkNWFmYzE5ZTJmMzkyIiwidXNlcl9pZCI6MX0.8rUczSSN-H9OypVnDRFhySJQ4QRKKFeGrejkTPXFfOA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"maran\",\r\n  \"password\": \"suri1704\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 17 Mar 2025 17:14:18 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.11"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "907"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count\": 5,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 6,\n            \"title\": \"New Task\",\n            \"description\": \"Task description\",\n            \"completed\": false,\n            \"created_at\": \"2025-03-17T17:07:33.907704Z\",\n            \"updated_at\": \"2025-03-17T17:07:33.907806Z\"\n        },\n        {\n            \"id\": 5,\n            \"title\": \"New Task\",\n            \"description\": \"Task description\",\n            \"completed\": false,\n            \"created_at\": \"2025-03-17T17:06:00.704571Z\",\n            \"updated_at\": \"2025-03-17T17:06:00.704700Z\"\n        },\n        {\n            \"id\": 4,\n            \"title\": \"New Task\",\n            \"description\": \"Task description\",\n            \"completed\": false,\n            \"created_at\": \"2025-03-17T17:04:08.381431Z\",\n            \"updated_at\": \"2025-03-17T17:04:08.382002Z\"\n        },\n        {\n            \"id\": 3,\n            \"title\": \"My First Task\",\n            \"description\": \"Complete Django API\",\n            \"completed\": false,\n            \"created_at\": \"2025-03-17T08:05:48.183545Z\",\n            \"updated_at\": \"2025-03-17T08:05:48.183545Z\"\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Complete Django API\",\n            \"description\": \"Finish building the Task API\",\n            \"completed\": false,\n            \"created_at\": \"2025-03-16T22:13:41.224044Z\",\n            \"updated_at\": \"2025-03-16T22:13:41.224044Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get specific task",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjMyNDIzLCJpYXQiOjE3NDIyMzIxMjMsImp0aSI6ImI3ZTVhZTEzYjk5MTQyMWFiNWUxNDhmZmExZGJhNDY4IiwidXNlcl9pZCI6MX0.mCelQauFHGLLeoAwt37UApRdlOPresCy6VPhZOEjgjE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"maran\",\r\n  \"password\": \"suri1704\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/tasks/2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tasks",
+						"2",
+						""
+					],
+					"query": [
+						{
+							"key": "Authoriation",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get specific task",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjMyNDIzLCJpYXQiOjE3NDIyMzIxMjMsImp0aSI6ImI3ZTVhZTEzYjk5MTQyMWFiNWUxNDhmZmExZGJhNDY4IiwidXNlcl9pZCI6MX0.mCelQauFHGLLeoAwt37UApRdlOPresCy6VPhZOEjgjE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"maran\",\r\n  \"password\": \"suri1704\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"2",
+								""
+							],
+							"query": [
+								{
+									"key": "Authoriation",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 17 Mar 2025 17:25:34 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.11"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "187"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 2,\n    \"title\": \"Complete Django API\",\n    \"description\": \"Finish building the Task API\",\n    \"completed\": false,\n    \"created_at\": \"2025-03-16T22:13:41.224044Z\",\n    \"updated_at\": \"2025-03-16T22:13:41.224044Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "delete task",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjMzNTA4LCJpYXQiOjE3NDIyMzMyMDgsImp0aSI6IjJkZmE1Mzg0ZDhlYTRiMWNiYzVmMDMzMzZkNmFlYTgzIiwidXNlcl9pZCI6MX0.fzAZ7vStpAOM0CLqzVkqDyhSlSVLyKx4XwCWkVRr7Zc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"maran\",\r\n  \"password\": \"suri1704\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/token/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"token",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "delete task",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjMzNTA4LCJpYXQiOjE3NDIyMzMyMDgsImp0aSI6IjJkZmE1Mzg0ZDhlYTRiMWNiYzVmMDMzMzZkNmFlYTgzIiwidXNlcl9pZCI6MX0.fzAZ7vStpAOM0CLqzVkqDyhSlSVLyKx4XwCWkVRr7Zc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"maran\",\r\n  \"password\": \"suri1704\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/5/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"5",
+								""
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 17 Mar 2025 17:42:41 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.11"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "update tasks",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjMzOTYwLCJpYXQiOjE3NDIyMjkwODgsImp0aSI6ImU4YjJmZTU0MTAyMzQxZjNiZDllNzA3MDcxZDJlZjVjIiwidXNlcl9pZCI6MX0.icsDqAzf3SM-zQQJEn9261xhcULJCHgr56AZa-fSsyg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/tasks/?completed=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tasks",
+						""
+					],
+					"query": [
+						{
+							"key": "completed",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "update tasks",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjMzOTYwLCJpYXQiOjE3NDIyMjkwODgsImp0aSI6ImU4YjJmZTU0MTAyMzQxZjNiZDllNzA3MDcxZDJlZjVjIiwidXNlcl9pZCI6MX0.icsDqAzf3SM-zQQJEn9261xhcULJCHgr56AZa-fSsyg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Updated Task Title\",\r\n  \"description\": \"Updated description\",\r\n  \"completed\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/8/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"8",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 17 Mar 2025 17:50:21 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.11"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "176"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 8,\n    \"title\": \"Updated Task Title\",\n    \"description\": \"Updated description\",\n    \"completed\": true,\n    \"created_at\": \"2025-03-17T17:49:49.527122Z\",\n    \"updated_at\": \"2025-03-17T17:50:21.436612Z\"\n}"
+				},
+				{
+					"name": "filter tasks",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjMzOTYwLCJpYXQiOjE3NDIyMjkwODgsImp0aSI6ImU4YjJmZTU0MTAyMzQxZjNiZDllNzA3MDcxZDJlZjVjIiwidXNlcl9pZCI6MX0.icsDqAzf3SM-zQQJEn9261xhcULJCHgr56AZa-fSsyg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/?completed=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								""
+							],
+							"query": [
+								{
+									"key": "completed",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 17 Mar 2025 17:51:36 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.11"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "405"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count\": 2,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 8,\n            \"title\": \"Updated Task Title\",\n            \"description\": \"Updated description\",\n            \"completed\": true,\n            \"created_at\": \"2025-03-17T17:49:49.527122Z\",\n            \"updated_at\": \"2025-03-17T17:50:21.436612Z\"\n        },\n        {\n            \"id\": 6,\n            \"title\": \"Updated Task Title\",\n            \"description\": \"Updated description\",\n            \"completed\": true,\n            \"created_at\": \"2025-03-17T17:07:33.907704Z\",\n            \"updated_at\": \"2025-03-17T17:44:48.171908Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "filter tasks by date range",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjM1MTA5LCJpYXQiOjE3NDIyMzQ4MDksImp0aSI6IjgwYTA0ZDEzYjVlYzQ5Y2RhNmM0NmY5MzkyMGM4ZDY0IiwidXNlcl9pZCI6MX0.gkVo9Q8UqniPTt1D3JyrYiqzezuYxwTlQTFDQ661_UI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/tasks/?created_after=2024-01-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tasks",
+						""
+					],
+					"query": [
+						{
+							"key": "created_after",
+							"value": "2024-01-01"
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "filter tasks by date range",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjM1MTA5LCJpYXQiOjE3NDIyMzQ4MDksImp0aSI6IjgwYTA0ZDEzYjVlYzQ5Y2RhNmM0NmY5MzkyMGM4ZDY0IiwidXNlcl9pZCI6MX0.gkVo9Q8UqniPTt1D3JyrYiqzezuYxwTlQTFDQ661_UI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/?created_after=2024-01-01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								""
+							],
+							"query": [
+								{
+									"key": "created_after",
+									"value": "2024-01-01"
+								},
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 17 Mar 2025 18:09:23 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.11"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "908"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count\": 5,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 9,\n            \"title\": \"New Task\",\n            \"description\": \"Task description\",\n            \"completed\": false,\n            \"created_at\": \"2025-03-17T17:49:50.746813Z\",\n            \"updated_at\": \"2025-03-17T17:49:50.746838Z\"\n        },\n        {\n            \"id\": 8,\n            \"title\": \"Updated Task Title\",\n            \"description\": \"Updated description\",\n            \"completed\": true,\n            \"created_at\": \"2025-03-17T17:49:49.527122Z\",\n            \"updated_at\": \"2025-03-17T17:50:21.436612Z\"\n        },\n        {\n            \"id\": 7,\n            \"title\": \"New Task\",\n            \"description\": \"Task description\",\n            \"completed\": false,\n            \"created_at\": \"2025-03-17T17:49:43.525327Z\",\n            \"updated_at\": \"2025-03-17T17:49:43.525379Z\"\n        },\n        {\n            \"id\": 6,\n            \"title\": \"Updated Task Title\",\n            \"description\": \"Updated description\",\n            \"completed\": true,\n            \"created_at\": \"2025-03-17T17:07:33.907704Z\",\n            \"updated_at\": \"2025-03-17T17:44:48.171908Z\"\n        },\n        {\n            \"id\": 3,\n            \"title\": \"My First Task\",\n            \"description\": \"Complete Django API\",\n            \"completed\": false,\n            \"created_at\": \"2025-03-17T08:05:48.183545Z\",\n            \"updated_at\": \"2025-03-17T08:05:48.183545Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": " Pagination for Task List",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjM1MTA5LCJpYXQiOjE3NDIyMzQ4MDksImp0aSI6IjgwYTA0ZDEzYjVlYzQ5Y2RhNmM0NmY5MzkyMGM4ZDY0IiwidXNlcl9pZCI6MX0.gkVo9Q8UqniPTt1D3JyrYiqzezuYxwTlQTFDQ661_UI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/tasks/?page=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tasks",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Pagination for Task List",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjM1MTA5LCJpYXQiOjE3NDIyMzQ4MDksImp0aSI6IjgwYTA0ZDEzYjVlYzQ5Y2RhNmM0NmY5MzkyMGM4ZDY0IiwidXNlcl9pZCI6MX0.gkVo9Q8UqniPTt1D3JyrYiqzezuYxwTlQTFDQ661_UI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/?page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 17 Mar 2025 18:11:05 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.11"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "908"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count\": 5,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 9,\n            \"title\": \"New Task\",\n            \"description\": \"Task description\",\n            \"completed\": false,\n            \"created_at\": \"2025-03-17T17:49:50.746813Z\",\n            \"updated_at\": \"2025-03-17T17:49:50.746838Z\"\n        },\n        {\n            \"id\": 8,\n            \"title\": \"Updated Task Title\",\n            \"description\": \"Updated description\",\n            \"completed\": true,\n            \"created_at\": \"2025-03-17T17:49:49.527122Z\",\n            \"updated_at\": \"2025-03-17T17:50:21.436612Z\"\n        },\n        {\n            \"id\": 7,\n            \"title\": \"New Task\",\n            \"description\": \"Task description\",\n            \"completed\": false,\n            \"created_at\": \"2025-03-17T17:49:43.525327Z\",\n            \"updated_at\": \"2025-03-17T17:49:43.525379Z\"\n        },\n        {\n            \"id\": 6,\n            \"title\": \"Updated Task Title\",\n            \"description\": \"Updated description\",\n            \"completed\": true,\n            \"created_at\": \"2025-03-17T17:07:33.907704Z\",\n            \"updated_at\": \"2025-03-17T17:44:48.171908Z\"\n        },\n        {\n            \"id\": 3,\n            \"title\": \"My First Task\",\n            \"description\": \"Complete Django API\",\n            \"completed\": false,\n            \"created_at\": \"2025-03-17T08:05:48.183545Z\",\n            \"updated_at\": \"2025-03-17T08:05:48.183545Z\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}
